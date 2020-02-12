@@ -15,6 +15,10 @@
 !.*ignore
 !LICENSE
 
+!.vscode
+!.yarn
+!.yarn/cache
+!.pnp.js
 !package.json
 !yarn.lock
 

@@ -30,9 +30,11 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@tunnckocore/prettier-config": "^1.2.0",
+    "@yarnpkg/pnpify": "^2.0.0-rc.18",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-node": "^0.3.3",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.1",
@@ -47,8 +49,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "git status --porcelain && lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "echo 'git status --porcelain && lint-staged'",
+      "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
   },
   "commitlint": {
