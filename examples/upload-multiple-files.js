@@ -2,7 +2,6 @@
 
 const os = require('os');
 const http = require('http');
-const util = require('util');
 
 const { Formidable } = require('../src/index');
 
@@ -11,8 +10,8 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'content-type': 'text/html' });
     res.end(`
       <form action="/upload" enctype="multipart/form-data" method="post">
-        <input type="text" name="title"><br>
-        <input type="file" name="someCoolFiles" multiple><br>
+        <input type="text" name="title"> <br />
+        <input type="file" name="someCoolFiles" multiple> <br >
         <button>Upload</button>
       </form>
     `);
@@ -30,12 +29,11 @@ const server = http.createServer((req, res) => {
         console.log(fieldName, file);
         files.push({ fieldName, file });
       })
+      .on('part', console.log)
       .on('end', () => {
         console.log('-> upload done');
         res.writeHead(200, { 'content-type': 'text/plain' });
-        res.write(`received fields:\n\n${util.inspect(fields)}`);
-        res.write('\n\n');
-        res.end(`received files:\n\n${util.inspect(files)}`);
+        res.end(JSON.stringify({ fields, files }, null, 2));
       });
 
     form.parse(req);
